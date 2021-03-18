@@ -8,7 +8,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:root@localhost/ho
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-
+# doctor table
 class doctor_mgmt(db.Model):
     DOC_ID = db.Column(db.Integer, primary_key=True)
     Doctor_Name = db.Column(db.String(80), unique=False, nullable=False)
@@ -16,7 +16,7 @@ class doctor_mgmt(db.Model):
     City = db.Column(db.String(20), nullable=False)
     State = db.Column(db.String(30), nullable=False)
 
-
+# Patient table
 class patient_mgmt(db.Model):
     SSN_ID = db.Column(db.Integer, primary_key=True)
     Patient_Name = db.Column(db.String(80), unique=False, nullable=False)
@@ -26,7 +26,7 @@ class patient_mgmt(db.Model):
     City = db.Column(db.String(20), nullable=False)
     State = db.Column(db.String(30), nullable=False)
 
-
+# medicine table
 class master_med(db.Model):
     med_id = db.Column(db.Integer, nullable=False, primary_key=True)
     med_name = db.Column(db.String(30), nullable=False)

@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block body %}
+
+        {%with messages= get_flashed_messages() %}
+        {% if messages %}
+          {% for msg in messages %}
+            <p class="alert alert-info">{{msg}}</p>
+          {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <div class="container" >
+            <h2 style="text-align: center;">Medcine</h2>
+            <form method="POST" action="{{ url_for('Medicine') }}" >
+              <div class="form-group">
+                <label for="medid">Medicine id:(*)</label>
+                <input type="medid" class="form-control" id="medid" placeholder="Enter medid" name="medid" required>
+              </div>
+              <div class="form-group">
+                <label for="medname">Medicine Name:(*)</label>
+                <input type="medname" class="form-control" id="medname" placeholder="Enter Medicine Name" name="medname" required>
+              </div>
+              <div class="form-group">
+                <label for="quantity">Medicine quantity:(*)</label>
+                <input type="quantity" class="form-control" id="quantity" placeholder="Enter Medicine quantity" name="quantity" required>
+              </div>
+               <div class="form-group">
+                <label for="price">Medicine price:(*)</label>
+                <input type="price" class="form-control" id="price" placeholder="Enter Medicine price" name="price" required>
+              </div>
+
+              <h5 style="color: red;">(*)Fields are mandatory</h5>
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="reset" class="btn btn-primary">Reset</button>
+            </form>
+          </div>
+
+{% endblock %}
