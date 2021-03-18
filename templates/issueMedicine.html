@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block body %}
+
+{%with messages= get_flashed_messages() %}
+        {% if messages %}
+          {% for msg in messages %}
+            <p class="alert alert-info">{{msg}}</p>
+          {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <div class="container" >
+            <h2 style="text-align: center; font-weight: bold;">issuemed Medicine</h2>
+            <form action="{{ url_for('issueMedi',pid=issumed.SSN_ID, medname=issuemed.med_name, reqQty=issuemed.quant_avail) }}" method="POST">
+               <div class="form-group">
+                <label for="pid">Medicine Name:</label>
+                <input type="pid" class="form-control" value="{{ issuemed.SSN_ID }}" id="pid" placeholder="Enter Patient id" name="pid" required>
+              </div>
+                <div class="form-group">
+                <label for="mname">Medicine Name:</label>
+                <input type="mname" class="form-control" value="{{ issuemed.med_name }}" id="mname" placeholder="Enter Medicine Name" name="mname" required>
+              </div>
+              <div class="form-group">
+                <label for="qty">Quantity:</label>
+                <input type="qty" class="form-control" value="{{ issuemed.med_name }}" id="qty" placeholder="Enter Quantity" name="qty" required>
+              </div>
+              <div class="form-group">
+                <label for="rate">Rate: </label>
+                <input type="rate" class="form-control" value="{{ issuemed.rate }}" id="rate" placeholder="Enter rate" name="rate" required>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="reset" class="btn btn-primary">Reset</button>
+            </form>
+          </div>
+
+{% endblock %}

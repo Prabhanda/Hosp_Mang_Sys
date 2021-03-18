@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block body %}
+
+        {%with messages= get_flashed_messages() %}
+        {% if messages %}
+          {% for msg in messages %}
+            <p class="alert alert-info">{{msg}}</p>
+          {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <div class="container" >
+            <h2 style="text-align: center;">Doctor Appointment </h2>
+            <form method="POST" action="{{ url_for('appointment') }}" >
+              <div class="form-group">
+                <label for="docid">Doctor docid:(*)</label>
+                <input type="docid" class="form-control" id="docid" placeholder="Enter docid" name="docid" required>
+              </div>
+              <div class="form-group">
+                <label for="docname">Doctor Name:(*)</label>
+                <input type="docname" class="form-control" id="docname" placeholder="Enter Doctor Name" name="docname" required>
+              </div>
+              <div class="form-group">
+                <label for="department">department:(*)</label>
+                <input type="department" class="form-control" id="department" placeholder="Enter department" name="department" required>
+              </div>
+              <div class="form-group">
+                <label for="city">City:(*)</label>
+                <input type="city" class="form-control" id="city" placeholder="Enter city" name="city" required>
+              </div>
+              <div class="form-group">
+                <label for="state">State:(*)</label>
+                <input type="state" class="form-control" id="state" placeholder="Enter State" name="state" required>
+              </div>
+
+
+
+              <h5 style="color: red;">(*)Fields are mandatory</h5>
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="reset" class="btn btn-primary">Reset</button>
+            </form>
+          </div>
+
+{% endblock %}
